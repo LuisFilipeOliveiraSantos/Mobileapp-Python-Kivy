@@ -1,0 +1,793 @@
+ScreenManager:
+    TelaDeInicio:
+    TelaDeRegistro:
+    TelaDeLogin:
+    HomePage:
+    PageJiu:
+    Camp1Jiu:
+    InscrevaJiu1:
+    Camp2Jiu:
+    InscrevaJiu2:
+    PageBoxing:
+    Camp1Boxing:
+    InscrevaBoxing1:
+
+
+<TelaDeInicio>
+    name: 'Inicio'
+    MDFloatLayout:
+        md_bg_color: (0,0,0,0)
+        Image:
+            source: 'imagens/Jiu.png'
+            size_hint: .80, .80
+            pos_hint:{"center_x": 0.5, "center_y": 0.6}
+
+
+        MDIconButton:
+            icon: "chevron-right"
+            pos_hint:{"center_x": 0.5, "center_y": 0.2}
+            md_bg_color: (277/255.0,152/255.0,86/255.0,255/255.0)
+            on_press: app.root.current = 'Login'
+
+
+        MDLabel:
+            text:"LuteChamps"
+            pos_hint:{"center_x":0.5, "center_y": 0.3}
+            halign: "center"
+            font_size:"35sp"
+            color: (0,0,0)
+            font_name: "Fontes/LOGOTYPE-Medium.ttf"
+
+
+<TelaDeLogin>
+    name: 'Login'
+
+    MDFloatLayout:
+
+        MDTopAppBar:
+            md_bg_color: 1,1,1,1
+            specific_text_color: app.theme_cls.primary_color
+            text: 'LuteChamps'
+            pos_hint: {'top': 1}
+            elevation: 0
+            left_action_items: [["arrow-left", lambda x: app.voltar_inicio()]]
+
+        Image:
+            source: 'imagens/Perfil.jpg'
+            size_hint: (0.4 , 0.4)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.77}
+
+        MDLabel:
+            text: "Seja bem Vindo!"
+            halign: 'center'
+            font_style: "H5"
+            bold: True
+            font_size: 20
+            pos_hint: {'center_x':0.5 , 'center_y': 0.63}
+
+        MDLabel:
+            text: "Faça o login para continuar"
+            halign: 'center'
+            font_style: "Caption"
+            pos_hint: {'center_x':0.5 , 'center_y': 0.59}
+
+        MDTextField:
+            id: text_email
+            hint_text: "Digite seu Email"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint_x: .9
+            icon_right:"email-outline"
+            icon_right_color: app.theme_cls.primary_color
+            mode: "fill"
+
+
+        MDTextField :
+            id: text_password
+            hint_text: "Digite sua Senha"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+            size_hint_x: .9
+            password:True
+            icon_right:"lock"
+            icon_right_color: app.theme_cls.primary_color
+            helper_text_mode: "on_error"
+            mode: "fill"
+
+
+
+        MDFillRoundFlatButton:
+            text:"Acessar"
+            font_size: 15
+            pos_hint:{'center_x': 0.5, 'center_y': 0.23}
+            elevation: 2
+            size_hint_x: .7
+            on_release:
+                root.login()
+
+        MDLabel:
+            text: "Não possui uma conta?"
+            pos_hint:{'center_x': 0.7, 'center_y': 0.15}
+            font_size:15
+
+        MDTextButton:
+            text:"Cadastrar"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.primary_color
+            pos_hint:{'center_x': 0.69, 'center_y': 0.15}
+            font_size: 15
+            on_press: app.root.current = 'Registro'
+
+
+        MDLabel:
+            id: label_erro
+            text: ""
+            pos_hint:{'center_x': 0.5, 'center_y': 0.05}
+            halign: 'center'
+            valign: 'middle'
+            font_size:15
+
+
+
+<TelaDeRegistro>
+    name: 'Registro'
+    MDFloatLayout:
+        md_bg_color: (0,0,0,0)
+
+        Image:
+            source: 'imagens/Perfil.jpg'
+            size_hint: (0.4 , 0.4)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.77}
+
+        MDLabel:
+            text: "Cadastre-se agora!"
+            halign: 'center'
+            font_style: "H5"
+            bold: True
+            font_size: 20
+            pos_hint: {'center_x':0.5 , 'center_y': 0.63}
+
+        MDLabel:
+            text: "Preencha os campos abaixo"
+            halign: 'center'
+            font_style: "Caption"
+            pos_hint: {'center_x':0.5 , 'center_y': 0.59}
+
+
+        MDTextField:
+            id: register_user
+            hint_text: "Digite seu nome usuario"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint_x: .9
+            icon_right:"account"
+            icon_right_color: app.theme_cls.primary_color
+            mode: "fill"
+
+        MDTextField:
+            id: register_email
+            hint_text: "Digite seu Email"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+            size_hint_x: .9
+            icon_right:"email-outline"
+            icon_right_color: app.theme_cls.primary_color
+            mode: "fill"
+
+
+        MDTextField :
+            id: register_password
+            hint_text: "Digite sua Senha"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+            size_hint_x: .9
+            password:True
+            icon_right:"lock"
+            icon_right_color: app.theme_cls.primary_color
+            helper_text_mode: "on_error"
+            mode: "fill"
+
+
+        MDFillRoundFlatButton:
+            text:"Cadastrar"
+            pos_hint:{'center_x': 0.5, 'center_y': 0.2}
+            size_hint_x: .7
+            elevation: 2
+            on_release:
+                root.create_user() and root.salvar_usuario()
+
+        MDLabel:
+            text: "Já possui uma conta?"
+            pos_hint:{'center_x': 0.74, 'center_y': 0.12}
+            font_size:15
+
+        MDTextButton:
+            text:"Login"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.primary_color
+            pos_hint:{'center_x': 0.67, 'center_y': 0.12}
+            font_size: 15
+            on_press: app.root.current = 'Login'
+
+        MDLabel:
+            id: label_error
+            text: ""
+            pos_hint:{'center_x': 0.5, 'center_y': 0.06}
+            halign: 'center'
+            valign: 'middle'
+            font_size:15
+
+
+
+<HomePage>
+    name: 'Home'
+    MDFloatLayout:
+        md_bg_color: (0,0,0,0)
+
+
+        MDTopAppBar:
+            title: "LuteChamps"
+            theme_text_color: "Custom"
+            text_color: "white"
+            pos_hint: {'top': 1}
+            left_action_items: [["logout", lambda x: app.go_back()]]
+            elevation: 1
+
+        MDLabel:
+            text:"Olá,Luis!"
+            font_size: 22
+            font_name: "Fontes/OpenSans-Semibold.ttf"
+            halign:'center'
+            pos_hint: {'center_x':0.5, 'center_y':0.8}
+
+
+        MDLabel:
+            text:"Escolha a Modalidade de luta"
+            font_style: "Caption"
+            font_size: 15
+            halign:'center'
+            pos_hint: {'center_x':0.5, 'center_y':0.74}
+
+
+
+        MDCard:
+            id: 'Jiujitsu'
+            elevation: 0
+            md_bg_color: 11/255.0,58/255.0,175/255.0,1
+            size_hint: 0.48, 0.3
+            adaptive_size: True
+            pos_hint: {'center_x': 0.75, 'center_y': 0.5}
+            border_radius: 20
+            radius: [15]
+            on_press: app.root.current ='Jiu'
+
+            MDBoxLayout:
+
+                Image:
+                    source: 'imagens/LutadorJiu.png'
+
+        MDCard:
+            id: 'Boxing'
+            elevation: 0
+            md_bg_color: 0.5,0.1,0.1,1
+            size_hint: 0.48,0.3
+            adaptive_size: True
+            pos_hint: {'center_x': 0.25, 'center_y': 0.5,}
+            border_radius: 20
+            radius: [15]
+            border_color: 0, 0, 0, 1
+            border_width: 2
+            on_press: app.root.current ='Boxing'
+
+            MDBoxLayout:
+
+                Image:
+                    source: 'imagens/Lutadorboxing.png'
+
+        MDLabel:
+            text: "Boxing"
+            font_size: 50
+            pos_hint:{'center_x': 0.58, 'center_y': 0.32}
+            theme_text_color: "Custom"
+            text_color: 229/255.0,76/255.0,50/255.0,255/255.0
+            font_name: "Fontes/ToonyLine_PERSONAL_USE_ONLY.otf"
+
+        MDLabel:
+            text: "Jiu-Jitsu"
+            font_size: 50
+            pos_hint:{'center_x': 1.07, 'center_y': 0.32}
+            theme_text_color: "Custom"
+            text_color: 64/255.0,127/255.0,147/255.0,255/255.0
+            font_name: "Fontes/ToonyLine_PERSONAL_USE_ONLY.otf"
+                    
+
+<PageJiu>
+    name: 'Jiu'
+    MDFloatLayout:
+        md_bg_color: (0,0,0,0)
+
+        MDTopAppBar:
+            md_bg_color: 1,1,1,0
+            title: "Campeonatos de Jiu-Jitsu"
+            pos_hint: {'top': 1}
+            elevation: 2
+            left_action_items: [["arrow-left", lambda x: app.go_back()]]
+
+        MDLabel:
+            text: "Clique no banner para abri-lo"
+            halign: 'center'
+            pos_hint: {'center_x':0.5,'center_y': 0.85}
+
+
+        ScrollView:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint: None, None
+            size: dp(300), dp(400)
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                spacing: 20
+                height: self.minimum_height
+                padding: dp(20)
+                size_hint_y: None
+
+
+                MDCard:
+                    elevation: 0
+                    md_bg_color: 0, 0.5, 0.8, 0
+                    size_hint: None, None
+                    size: dp(900), dp(400)
+                    pos_hint: {'center_x': 0.5}
+                    on_press: app.root.current ='camp1'
+
+                    MDBoxLayout:
+                        Image:
+                            source: 'imagens/CARTAZ_REGISTRO_2023.jpeg'
+                            pos_hint: {'center_x': 1, 'center_y': 0.5}
+
+
+                MDCard:
+                    elevation: 0
+                    md_bg_color: 0, 0.5, 0.1, 0
+                    size_hint: None, None
+                    size: dp(900), dp(400)
+                    pos_hint: {'center_x': 0.5}
+                    on_press: app.root.current ='camp2'
+
+                    MDBoxLayout:
+                        Image:
+                            source: 'imagens/Campeonato 2.jpg'
+
+
+<Camp1Jiu>:
+    name: 'camp1'
+    MDFloatLayout:
+        md_bg_color: 0, 0, 0, 0
+
+
+
+
+        MDTextButton:
+            text: "Clique aqui para se inscrever"
+            custom_color: "orange"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.85}
+            padding: 10
+            on_press: app.root.current = 'inscricao1'
+
+        Image:
+            source: 'imagens/CARTAZ_REGISTRO_2023.jpeg'
+            size_hint_y: None
+            height: self.parent.width * self.texture_size[1] / self.texture_size[0]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.43}
+            height: 500
+
+
+
+
+        MDTopAppBar:
+            md_bg_color: 1, 1, 1, 1
+            specific_text_color: app.theme_cls.primary_color
+            title: ""
+            pos_hint: {'top': 1}
+            elevation: 0
+            left_action_items: [["arrow-left", lambda x: app.go_back()]]
+
+<Camp2Jiu>
+    name: 'camp2'
+    MDFloatLayout:
+        md_bg_color: 0, 0, 0, 0
+
+
+
+
+        MDTextButton:
+            text: "Clique aqui para se inscrever"
+            custom_color: "orange"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.85}
+            padding: 10
+            on_press: app.root.current = 'inscricao2'
+
+        Image:
+            source: 'imagens/Campeonato 2.jpg'
+            size_hint_y: None
+            height: self.parent.width * self.texture_size[1] / self.texture_size[0]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.43}
+            height: 500
+
+
+
+
+        MDTopAppBar:
+            md_bg_color: 1, 1, 1, 1
+            specific_text_color: app.theme_cls.primary_color
+            title: ""
+            pos_hint: {'top': 1}
+            elevation: 0
+            left_action_items: [["arrow-left", lambda x: app.volta_pagejiu()]]
+
+
+<InscrevaJiu1>
+    name: 'inscricao1'
+    MDFloatLayout:
+        spacing: 10
+
+        MDTopAppBar:
+            md_bg_color: 1,1,1,0
+            title: "INSCRIÇÃO DE ATLELAS-1/2"
+            pos_hint: {'top': 1}
+            elevation: 2
+            left_action_items: [["arrow-left", lambda x: app.go_back()]]
+
+        MDLabel:
+            halign: 'left'
+            text:"CAMPEONATO REGISTRO DE JIU-JITSU 2023 - 1a ETAPA"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+            font_size: 14
+            padding: 20,0,0,0
+
+
+        MDLabel:
+            halign: 'left'
+            text:"Nome:"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.73}
+            font_size: 18
+            padding: 20,0,0,0
+            font_name: "Fontes/OpenSans-Semibold.ttf"
+
+
+        MDTextField:
+            id: nome1
+            hint_text: "Digite seu nome completo"
+            mode:"fill"
+            width: 200
+            halign: 'left'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.65}
+            padding: 20,0,0,0
+            font_size: 20
+            icon_left: "account-outline"
+            size_hint_x: .9
+
+        MDLabel:
+            halign: 'left'
+            text:"CPF:"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+            font_size: 18
+            padding: 20,0,0,0
+            font_name: "Fontes/OpenSans-Semibold.ttf"
+
+
+        MDTextField:
+            id: cpf1
+            hint_text: "EX:22532363290 (só números)"
+            mode: "fill"
+            width: 10
+            halign: 'left'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.48}
+            padding: [20, 20, 20, 20]
+            font_size: 20
+            icon_left:"card-account-details-outline"
+            size_hint_x: .9
+
+        MDLabel:
+            halign: 'left'
+            text:"Data de Nascimento:"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+            font_size: 18
+            padding: 20,0,0,0
+            font_name: "Fontes/OpenSans-Semibold.ttf"
+
+
+        MDTextField:
+            id: data1
+            hint_text: "EX:19/02/2000"
+            mode: "fill"
+            width: 10
+            halign: 'left'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.28}
+            padding: [20, 20, 20, 20]
+            font_size: 20
+            icon_left:"calendar"
+            size_hint_x: .9
+
+        MDRaisedButton:
+            text:"Inscrever-se"
+            pos_hint:{'center_x': 0.5, 'center_y': 0.15}
+            elevation: 2
+            on_release:
+                root.campeonato_1()
+
+        MDLabel:
+            id: ins_error
+            text: ""
+            pos_hint:{'center_x':0.5,'center_y':0.06}
+            halign: 'center'
+
+
+<InscrevaJiu2>
+    name: 'inscricao2'
+    MDFloatLayout:
+        spacing: 10
+
+        MDTopAppBar:
+            md_bg_color: 1,1,1,0
+            title: "INSCRIÇÃO DE ATLETAS 2/2"
+            pos_hint: {'top': 1}
+            elevation: 2
+            left_action_items: [["arrow-left", lambda x: app.volta_camp2()]]
+
+        MDLabel:
+            halign: 'left'
+            text:"COPA ENCONTRO DAS AGUAS DE JIU-JITSU 2023"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+            font_size: 14
+            padding: 20,0,0,0
+
+
+        MDLabel:
+            halign: 'left'
+            text:"Nome:"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.73}
+            font_size: 18
+            padding: 20,0,0,0
+            font_name: "Fontes/OpenSans-Semibold.ttf"
+
+
+        MDTextField:
+            id: nome2
+            hint_text: "Digite seu nome completo"
+            mode:"fill"
+            width: 200
+            halign: 'left'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.65}
+            padding: 20,0,0,0
+            font_size: 20
+            icon_left: "account-outline"
+            size_hint_x: .9
+
+        MDLabel:
+            halign: 'left'
+            text:"CPF:"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+            font_size: 18
+            padding: 20,0,0,0
+            font_name: "Fontes/OpenSans-Semibold.ttf"
+
+
+        MDTextField:
+            id: cpf2
+            hint_text: "EX:22532363290 (só números)"
+            mode: "fill"
+            width: 10
+            halign: 'left'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.48}
+            padding: [20, 20, 20, 20]
+            font_size: 20
+            icon_left:"card-account-details-outline"
+            size_hint_x: .9
+
+        MDLabel:
+            halign: 'left'
+            text:"Data de Nascimento:"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+            font_size: 18
+            padding: 20,0,0,0
+            font_name: "Fontes/OpenSans-Semibold.ttf"
+
+
+        MDTextField:
+            id: data2
+            hint_text: "EX:19/02/2000"
+            mode: "fill"
+            width: 10
+            halign: 'left'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.28}
+            padding: [20, 20, 20, 20]
+            font_size: 20
+            icon_left:"calendar"
+            size_hint_x: .9
+
+        MDRaisedButton:
+            text:"Inscrever-se"
+            pos_hint:{'center_x': 0.5, 'center_y': 0.15}
+            elevation: 2
+            on_release:
+                root.campeonato_2()
+
+        MDLabel:
+            id: ins_error
+            text: ""
+            pos_hint:{'center_x':0.5,'center_y':0.06}
+            halign: 'center'
+
+<PageBoxing>
+    name: 'Boxing'
+    MDFloatLayout:
+        md_bg_color: (0,0,0,0)
+
+        MDTopAppBar:
+            md_bg_color: 1,1,1,0
+            title: "Campeonatos de Boxing"
+            pos_hint: {'top': 1}
+            elevation: 2
+            left_action_items: [["arrow-left", lambda x: app.volta_homepage()]]
+
+        MDLabel:
+            text: "Clique no banner para abri-lo"
+            halign: 'center'
+            pos_hint: {'center_x':0.5,'center_y': 0.85}
+
+
+        ScrollView:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint: None, None
+            size: dp(350), dp(400)
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                spacing: 20
+                height: self.minimum_height
+                padding: dp(20)
+                size_hint_y: None
+
+
+                MDCard:
+                    elevation: 0
+                    md_bg_color: 0, 0.5, 0.8, 0
+                    size_hint: None, None
+                    size: dp(900), dp(400)
+                    pos_hint: {'center_x': 0.5}
+                    on_press: app.root.current ='Camp1Boxing'
+
+                    MDBoxLayout:
+                        Image:
+                            source: 'imagens/Campeonato1.png'
+                            pos_hint: {'center_x': 1, 'center_y': 0.5}
+
+
+                MDCard:
+                    elevation: 0
+                    md_bg_color: 0, 0.5, 0.1, 0
+                    size_hint: None, None
+                    size: dp(900), dp(400)
+                    pos_hint: {'center_x': 0.5}
+
+<Camp1Boxing>
+    name: 'Camp1Boxing'
+    MDFloatLayout:
+        md_bg_color: 0, 0, 0, 0
+
+
+        MDTextButton:
+            text: "Clique aqui para se inscrever"
+            custom_color: "orange"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.85}
+            padding: 10
+            on_press: app.root.current = 'Inscreva3'
+
+        Image:
+            source: 'imagens/Campeonato1.png'
+            size_hint_y: None
+            height: self.parent.width * self.texture_size[1] / self.texture_size[0]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.43}
+            height: 500
+
+        MDTopAppBar:
+            md_bg_color: 1, 1, 1, 1
+            specific_text_color: app.theme_cls.primary_color
+            title: ""
+            pos_hint: {'top': 1}
+            elevation: 0
+            left_action_items: [["arrow-left", lambda x: app.volta_pagebox()]]
+
+
+<InscrevaBoxing1>
+    name: 'Inscreva3'
+    MDFloatLayout:
+        spacing: 10
+
+        MDTopAppBar:
+            md_bg_color: 1,1,1,0
+            title: "INSCRIÇÃO DE ATLETAS 1/1"
+            pos_hint: {'top': 1}
+            elevation: 2
+            left_action_items: [["arrow-left", lambda x: app.volta_pagebox()]]
+
+        MDLabel:
+            halign: 'left'
+            text:"CAMPEONATO GOIANO BOXE OLÍMPICO - 2023"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+            font_size: 14
+            padding: 20,0,0,0
+
+
+        MDLabel:
+            halign: 'left'
+            text:"Nome:"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.73}
+            font_size: 18
+            padding: 20,0,0,0
+            font_name: "Fontes/OpenSans-Semibold.ttf"
+
+
+        MDTextField:
+            id: nome3
+            hint_text: "Digite seu nome completo"
+            mode:"fill"
+            width: 200
+            halign: 'left'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.65}
+            padding: 20,0,0,0
+            font_size: 20
+            icon_left: "account-outline"
+            size_hint_x: .9
+
+        MDLabel:
+            halign: 'left'
+            text:"CPF:"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+            font_size: 18
+            padding: 20,0,0,0
+            font_name: "Fontes/OpenSans-Semibold.ttf"
+
+
+        MDTextField:
+            id: cpf3
+            hint_text: "EX:22532363290 (só números)"
+            mode: "fill"
+            width: 10
+            halign: 'left'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.48}
+            padding: [20, 20, 20, 20]
+            font_size: 20
+            icon_left:"card-account-details-outline"
+            size_hint_x: .9
+
+        MDLabel:
+            halign: 'left'
+            text:"Data de Nascimento:"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+            font_size: 18
+            padding: 20,0,0,0
+            font_name: "Fontes/OpenSans-Semibold.ttf"
+
+
+        MDTextField:
+            id: data3
+            hint_text: "EX:19/02/2000"
+            mode: "fill"
+            width: 10
+            halign: 'left'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.28}
+            padding: [20, 20, 20, 20]
+            font_size: 20
+            icon_left:"calendar"
+            size_hint_x: .9
+
+        MDRaisedButton:
+            text:"Inscrever-se"
+            pos_hint:{'center_x': 0.5, 'center_y': 0.15}
+            elevation: 2
+            on_release:
+                root.campeonato_boxing1()
+
+        MDLabel:
+            id: ins_error
+            text: ""
+            pos_hint:{'center_x':0.5,'center_y':0.06}
+            halign: 'center'
+
